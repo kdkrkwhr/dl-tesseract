@@ -22,29 +22,20 @@ def cleanPlate(plate): # Last 처리
 	_, thresh = cv2.threshold(gray, 150, 255, cv2.THRESH_BINARY)
 
 	im1, contours, hierarchy = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
-	# cv2.imshow("threshold_img22", plate)
 
 	if contours:
 		areas = [cv2.contourArea(c) for c in contours]
 		max_index = np.argmax(areas)
-
 		max_cnt = contours[max_index]
 		max_cntArea = areas[max_index]
-
 		x, y, w, h = cv2.boundingRect(max_cnt)
-		# if not ratioCheck(max_cntArea, w, h):
-		#
-		# 	return plate, None
-
 		cleaned_final = thresh[y: y+h, x: x+w]
-
 		return cleaned_final, [x, y, w, h]
 	else:
 		return plate, None
 
 def extract_contours(threshold_img):
 	element = cv2.getStructuringElement(shape=cv2.MORPH_RECT, ksize=(17, 3))
-	# cv2.imshow('threshold_img', threshold_img)
 
 	morph_img_threshold = threshold_img.copy()
 	cv2.morphologyEx(src=threshold_img, op=cv2.MORPH_CLOSE, kernel=element, dst=morph_img_threshold)
@@ -119,21 +110,16 @@ def cleanAndRead(img, contours, cnt2):	# Main
 						cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 255), 3)
 
 						cnt2 = cnt2 + 1
-						# cv2.imshow("Cleaned Plate", plate_img)
 						text = tess.image_to_string(clean_plate, lang='eng', config=config)
 						text2 = re.sub('[-=.#/?:_$}]', '', text)
 						cv2.putText(img, str(text2), (x, y - 10), cv2.FONT_ITALIC, 0.8, (255, 0, 0), 2, cv2.LINE_AA)
-						# cv2.imwrite("images/video/" + str(cnt2) + ".jpg", plate_img)
 
-						# print("TEXT : ", text)
 						print("TEXT : ", text2)
 						cv2.imshow("img", img)
 
 if __name__ == '__main__':
-	# cap = cv2.VideoCapture('video/test1.mp4')
 	cnt2 = 0
-	img = cv2.imread("testData/success/1.jpg")  # 이미지 Input
-	# img = cv2.imread("testData/0419/notdenmed.png")
+	img = cv2.imread("testData/success/0511.png")  # 이미지 Input
 	threshold_img = preprocess(img)
 	contours = extract_contours(threshold_img)
 	cleanAndRead(img, contours, cnt2)
