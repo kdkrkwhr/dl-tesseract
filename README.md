@@ -16,4 +16,11 @@
 + Tesseract 4.0.0
 ### **Tool**  
 + PyCharm  
++ JTessBoxEditor   
 ---
+
+**Sample Img**  
+![Detection Example](https://ifh.cc/g/Ibrou.jpg)
+
+
+
