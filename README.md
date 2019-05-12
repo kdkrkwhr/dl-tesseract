@@ -24,3 +24,7 @@ Kim Dong-gi
 
 
 
+## **JTessBoxEditor**   
+https://www.youtube.com/watch?v=HgeksbqH0ng    
+
+
