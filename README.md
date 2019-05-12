@@ -1,7 +1,7 @@
 
 # Deep Learning Project     
    Machine Learning    
-   Computer Vision
+   Computer Vision      
    Tesseract
 
 
