@@ -5,7 +5,7 @@
    Tesseract
 
 
-김동기
+Kim Dong-gi
 ---
 
 ### **Environment**  
@@ -20,7 +20,7 @@
 ---
 
 **Sample Img**  
-![Detection Example](https://ibb.co/NjStnYG)
+![Detection Example](https://i.postimg.cc/sgJLT1qm/tesseract.png)
 
 
 
